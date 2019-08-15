@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("/site/basic")
+@RequestMapping("/api/site/basic")
 public class SiteController {
     @Resource
     private HttpServletRequest request;
