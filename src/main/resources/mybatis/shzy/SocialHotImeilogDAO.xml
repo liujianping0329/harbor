@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shxp.harbor.dao.shzy.SocialHotImeilogDAO">
+  <resultMap id="BaseResultMap" type="com.shxp.harbor.po.SocialHotImeilog">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="imei" jdbcType="VARCHAR" property="imei" />
+    <result column="imsi" jdbcType="VARCHAR" property="imsi" />
+    <result column="wsiteid" jdbcType="VARCHAR" property="wsiteid" />
+    <result column="wagentid" jdbcType="VARCHAR" property="wagentid" />
+    <result column="starttime" jdbcType="TIMESTAMP" property="starttime" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="model" jdbcType="VARCHAR" property="model" />
+    <result column="filename" jdbcType="VARCHAR" property="filename" />
+    <result column="importtime" jdbcType="TIMESTAMP" property="importtime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="police_stationid" jdbcType="VARCHAR" property="policeStationid" />
+    <result column="police_areaid" jdbcType="VARCHAR" property="policeAreaid" />
+    <result column="police_provinceid" jdbcType="VARCHAR" property="policeProvinceid" />
+    <result column="isStatic" jdbcType="VARCHAR" property="isstatic" />
+    <result column="isTrans" jdbcType="INTEGER" property="istrans" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, imei, imsi, wsiteid, wagentid, starttime, `location`, model, filename, importtime, 
+    remark, police_stationid, police_areaid, police_provinceid, isStatic, isTrans
+  </sql>
+  <select id="selectByExample" parameterType="com.shxp.harbor.po.SocialHotImeilogExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from social_hot_imeilog
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from social_hot_imeilog
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from social_hot_imeilog
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.shxp.harbor.po.SocialHotImeilogExample">
+    delete from social_hot_imeilog
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.shxp.harbor.po.SocialHotImeilog" useGeneratedKeys="true">
+    insert into social_hot_imeilog (imei, imsi, wsiteid, 
+      wagentid, starttime, `location`, 
+      model, filename, importtime, 
+      remark, police_stationid, police_areaid, 
+      police_provinceid, isStatic, isTrans
+      )
+    values (#{imei,jdbcType=VARCHAR}, #{imsi,jdbcType=VARCHAR}, #{wsiteid,jdbcType=VARCHAR}, 
+      #{wagentid,jdbcType=VARCHAR}, #{starttime,jdbcType=TIMESTAMP}, #{location,jdbcType=VARCHAR}, 
+      #{model,jdbcType=VARCHAR}, #{filename,jdbcType=VARCHAR}, #{importtime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{policeStationid,jdbcType=VARCHAR}, #{policeAreaid,jdbcType=VARCHAR}, 
+      #{policeProvinceid,jdbcType=VARCHAR}, #{isstatic,jdbcType=VARCHAR}, #{istrans,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.shxp.harbor.po.SocialHotImeilog" useGeneratedKeys="true">
+    insert into social_hot_imeilog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="imei != null">
+        imei,
+      </if>
+      <if test="imsi != null">
+        imsi,
+      </if>
+      <if test="wsiteid != null">
+        wsiteid,
+      </if>
+      <if test="wagentid != null">
+        wagentid,
+      </if>
+      <if test="starttime != null">
+        starttime,
+      </if>
+      <if test="location != null">
+        `location`,
+      </if>
+      <if test="model != null">
+        model,
+      </if>
+      <if test="filename != null">
+        filename,
+      </if>
+      <if test="importtime != null">
+        importtime,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="policeStationid != null">
+        police_stationid,
+      </if>
+      <if test="policeAreaid != null">
+        police_areaid,
+      </if>
+      <if test="policeProvinceid != null">
+        police_provinceid,
+      </if>
+      <if test="isstatic != null">
+        isStatic,
+      </if>
+      <if test="istrans != null">
+        isTrans,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="imei != null">
+        #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="imsi != null">
+        #{imsi,jdbcType=VARCHAR},
+      </if>
+      <if test="wsiteid != null">
+        #{wsiteid,jdbcType=VARCHAR},
+      </if>
+      <if test="wagentid != null">
+        #{wagentid,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="filename != null">
+        #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="importtime != null">
+        #{importtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="policeStationid != null">
+        #{policeStationid,jdbcType=VARCHAR},
+      </if>
+      <if test="policeAreaid != null">
+        #{policeAreaid,jdbcType=VARCHAR},
+      </if>
+      <if test="policeProvinceid != null">
+        #{policeProvinceid,jdbcType=VARCHAR},
+      </if>
+      <if test="isstatic != null">
+        #{isstatic,jdbcType=VARCHAR},
+      </if>
+      <if test="istrans != null">
+        #{istrans,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.shxp.harbor.po.SocialHotImeilogExample" resultType="java.lang.Long">
+    select count(*) from social_hot_imeilog
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update social_hot_imeilog
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.imei != null">
+        imei = #{record.imei,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imsi != null">
+        imsi = #{record.imsi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wsiteid != null">
+        wsiteid = #{record.wsiteid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wagentid != null">
+        wagentid = #{record.wagentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.starttime != null">
+        starttime = #{record.starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.location != null">
+        `location` = #{record.location,jdbcType=VARCHAR},
+      </if>
+      <if test="record.model != null">
+        model = #{record.model,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filename != null">
+        filename = #{record.filename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.importtime != null">
+        importtime = #{record.importtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.policeStationid != null">
+        police_stationid = #{record.policeStationid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.policeAreaid != null">
+        police_areaid = #{record.policeAreaid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.policeProvinceid != null">
+        police_provinceid = #{record.policeProvinceid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isstatic != null">
+        isStatic = #{record.isstatic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.istrans != null">
+        isTrans = #{record.istrans,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update social_hot_imeilog
+    set id = #{record.id,jdbcType=INTEGER},
+      imei = #{record.imei,jdbcType=VARCHAR},
+      imsi = #{record.imsi,jdbcType=VARCHAR},
+      wsiteid = #{record.wsiteid,jdbcType=VARCHAR},
+      wagentid = #{record.wagentid,jdbcType=VARCHAR},
+      starttime = #{record.starttime,jdbcType=TIMESTAMP},
+      `location` = #{record.location,jdbcType=VARCHAR},
+      model = #{record.model,jdbcType=VARCHAR},
+      filename = #{record.filename,jdbcType=VARCHAR},
+      importtime = #{record.importtime,jdbcType=TIMESTAMP},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      police_stationid = #{record.policeStationid,jdbcType=VARCHAR},
+      police_areaid = #{record.policeAreaid,jdbcType=VARCHAR},
+      police_provinceid = #{record.policeProvinceid,jdbcType=VARCHAR},
+      isStatic = #{record.isstatic,jdbcType=VARCHAR},
+      isTrans = #{record.istrans,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shxp.harbor.po.SocialHotImeilog">
+    update social_hot_imeilog
+    <set>
+      <if test="imei != null">
+        imei = #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="imsi != null">
+        imsi = #{imsi,jdbcType=VARCHAR},
+      </if>
+      <if test="wsiteid != null">
+        wsiteid = #{wsiteid,jdbcType=VARCHAR},
+      </if>
+      <if test="wagentid != null">
+        wagentid = #{wagentid,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        starttime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="location != null">
+        `location` = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="filename != null">
+        filename = #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="importtime != null">
+        importtime = #{importtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="policeStationid != null">
+        police_stationid = #{policeStationid,jdbcType=VARCHAR},
+      </if>
+      <if test="policeAreaid != null">
+        police_areaid = #{policeAreaid,jdbcType=VARCHAR},
+      </if>
+      <if test="policeProvinceid != null">
+        police_provinceid = #{policeProvinceid,jdbcType=VARCHAR},
+      </if>
+      <if test="isstatic != null">
+        isStatic = #{isstatic,jdbcType=VARCHAR},
+      </if>
+      <if test="istrans != null">
+        isTrans = #{istrans,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shxp.harbor.po.SocialHotImeilog">
+    update social_hot_imeilog
+    set imei = #{imei,jdbcType=VARCHAR},
+      imsi = #{imsi,jdbcType=VARCHAR},
+      wsiteid = #{wsiteid,jdbcType=VARCHAR},
+      wagentid = #{wagentid,jdbcType=VARCHAR},
+      starttime = #{starttime,jdbcType=TIMESTAMP},
+      `location` = #{location,jdbcType=VARCHAR},
+      model = #{model,jdbcType=VARCHAR},
+      filename = #{filename,jdbcType=VARCHAR},
+      importtime = #{importtime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      police_stationid = #{policeStationid,jdbcType=VARCHAR},
+      police_areaid = #{policeAreaid,jdbcType=VARCHAR},
+      police_provinceid = #{policeProvinceid,jdbcType=VARCHAR},
+      isStatic = #{isstatic,jdbcType=VARCHAR},
+      isTrans = #{istrans,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
