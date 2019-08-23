@@ -30,6 +30,11 @@ public class SiteServiceImpl implements SiteService {
         SocialSiteInfoExample.Criteria criteria = socialSiteInfoExample.createCriteria();
         // TODO 加条件筛选
         criteria.andParentidEqualTo("1");
+        if(siteListQuery.getSiteIds()!=null){
+            if(siteListQuery.getSiteIds().size()!=0){
+                criteria.andSiteIdIn(siteListQuery.getSiteIds());
+            }
+        }
         PageHelper.startPage(siteListQuery.getPageIndex(), siteListQuery.getPageSize());
         List<SocialSiteInfo> socialSiteInfos = this.socialSiteInfoDAO.selectByExample(socialSiteInfoExample);
         PageInfo pageInfo = new PageInfo(socialSiteInfos);

@@ -2,8 +2,10 @@ package com.shxp.harbor.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.shxp.harbor.query.SiteListQuery;
 import com.shxp.harbor.service.HotImeiService;
 import com.shxp.harbor.service.SiteService;
+import com.shxp.harbor.vo.SiteListVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,8 @@ import com.shxp.harbor.service.util.DataUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,6 +27,8 @@ public class HotImeiServiceImpl implements HotImeiService {
 
     @Autowired
     private SocialHotImeilogDAO SocialHotImeilogDAO;
+    @Autowired
+    private SiteService siteService;
 
     @Override
     public PageInfo<HotImeiListVO> listHotImei(HotImeiListQuery hotImeiListQuery) {
@@ -49,10 +55,17 @@ public class HotImeiServiceImpl implements HotImeiService {
         List<SocialHotImeilog> socialHotImeilogs = this.SocialHotImeilogDAO.selectByExample(socialHotImeilogExample);
         PageInfo pageInfo = new PageInfo(socialHotImeilogs);
         if (!DataUtils.isListAvali(socialHotImeilogs)) return pageInfo;
-        // TODO 要不要查点别的?
+
+        Set<String> siteIds=socialHotImeilogs.stream().map(SocialHotImeilog::getWsiteid).collect(Collectors.toSet());
+        SiteListQuery siteListQuery=new SiteListQuery();
+        siteListQuery.setSiteIds(new ArrayList<>(siteIds));
+        List<SiteListVO> siteListVOS = siteService.listSite(siteListQuery).getList();
+        Map<String, String> siteRelation = siteListVOS.stream().collect(Collectors.toMap(SiteListVO::getSiteId, SiteListVO::getSiteName));
+
         pageInfo.setList(socialHotImeilogs.stream().map(socialHotImeilog -> {
             HotImeiListVO hotImeiListVO = new HotImeiListVO();
             BeanUtils.copyProperties(socialHotImeilog, hotImeiListVO);
+            hotImeiListVO.setWsiteName(siteRelation.get(socialHotImeilog.getWsiteid()));
             return hotImeiListVO;
         }).collect(Collectors.toList()));
         return pageInfo;

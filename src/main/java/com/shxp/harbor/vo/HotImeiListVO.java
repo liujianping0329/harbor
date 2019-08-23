@@ -18,6 +18,9 @@ public class HotImeiListVO {
     @ApiModelProperty("站点编号")
     private String wsiteid;
 
+    @ApiModelProperty("站点名称")
+    private String wsiteName;
+
     @ApiModelProperty("代理编号")
     private String wagentid;
 
