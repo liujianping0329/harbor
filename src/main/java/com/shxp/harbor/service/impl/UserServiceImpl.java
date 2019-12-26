@@ -1,6 +1,6 @@
 package com.shxp.harbor.service.impl;
 
-import com.shxp.harbor.dao.renren.SysUserDAO;
+import com.shxp.harbor.dao.SysUserDAO;
 import com.shxp.harbor.exception.HarborException;
 import com.shxp.harbor.po.SysUser;
 import com.shxp.harbor.po.SysUserExample;

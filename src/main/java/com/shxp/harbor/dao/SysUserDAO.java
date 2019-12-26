@@ -1,4 +1,4 @@
-package com.shxp.harbor.dao.renren;
+package com.shxp.harbor.dao;
 
 import com.shxp.harbor.po.SysUser;
 import com.shxp.harbor.po.SysUserExample;

@@ -11,8 +11,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerA
 
 @EnableSwagger2Doc
 @SpringBootApplication
-@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class, MybatisAutoConfiguration.class})
-//@MapperScan("com.shxp.harbor.dao")
+@MapperScan("com.shxp.harbor.dao")
 public class HarborApplication {
 
     public static void main(String[] args) {
