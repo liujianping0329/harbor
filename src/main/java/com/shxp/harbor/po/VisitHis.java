@@ -18,6 +18,8 @@ public class VisitHis implements Serializable {
 
     private Date ctime;
 
+    private Date mtime;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -60,6 +62,14 @@ public class VisitHis implements Serializable {
         this.ctime = ctime;
     }
 
+    public Date getMtime() {
+        return mtime;
+    }
+
+    public void setMtime(Date mtime) {
+        this.mtime = mtime;
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -76,7 +86,8 @@ public class VisitHis implements Serializable {
             && (this.getCip() == null ? other.getCip() == null : this.getCip().equals(other.getCip()))
             && (this.getCid() == null ? other.getCid() == null : this.getCid().equals(other.getCid()))
             && (this.getCname() == null ? other.getCname() == null : this.getCname().equals(other.getCname()))
-            && (this.getCtime() == null ? other.getCtime() == null : this.getCtime().equals(other.getCtime()));
+            && (this.getCtime() == null ? other.getCtime() == null : this.getCtime().equals(other.getCtime()))
+            && (this.getMtime() == null ? other.getMtime() == null : this.getMtime().equals(other.getMtime()));
     }
 
     @Override
@@ -88,6 +99,7 @@ public class VisitHis implements Serializable {
         result = prime * result + ((getCid() == null) ? 0 : getCid().hashCode());
         result = prime * result + ((getCname() == null) ? 0 : getCname().hashCode());
         result = prime * result + ((getCtime() == null) ? 0 : getCtime().hashCode());
+        result = prime * result + ((getMtime() == null) ? 0 : getMtime().hashCode());
         return result;
     }
 
@@ -102,6 +114,7 @@ public class VisitHis implements Serializable {
         sb.append(", cid=").append(cid);
         sb.append(", cname=").append(cname);
         sb.append(", ctime=").append(ctime);
+        sb.append(", mtime=").append(mtime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

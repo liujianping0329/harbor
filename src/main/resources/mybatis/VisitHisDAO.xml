@@ -7,6 +7,7 @@
     <result column="cid" jdbcType="VARCHAR" property="cid" />
     <result column="cname" jdbcType="VARCHAR" property="cname" />
     <result column="ctime" jdbcType="TIMESTAMP" property="ctime" />
+    <result column="mtime" jdbcType="TIMESTAMP" property="mtime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, cip, cid, cname, ctime
+    id, cip, cid, cname, ctime, mtime
   </sql>
   <select id="selectByExample" parameterType="com.shxp.harbor.po.VisitHisExample" resultMap="BaseResultMap">
     select
@@ -107,18 +108,15 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.shxp.harbor.po.VisitHis">
-    insert into visit_his (id, cip, cid, 
-      cname, ctime)
-    values (#{id,jdbcType=INTEGER}, #{cip,jdbcType=VARCHAR}, #{cid,jdbcType=VARCHAR}, 
-      #{cname,jdbcType=VARCHAR}, #{ctime,jdbcType=TIMESTAMP})
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.shxp.harbor.po.VisitHis" useGeneratedKeys="true">
+    insert into visit_his (cip, cid, cname, 
+      ctime, mtime)
+    values (#{cip,jdbcType=VARCHAR}, #{cid,jdbcType=VARCHAR}, #{cname,jdbcType=VARCHAR}, 
+      #{ctime,jdbcType=TIMESTAMP}, #{mtime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.shxp.harbor.po.VisitHis">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.shxp.harbor.po.VisitHis" useGeneratedKeys="true">
     insert into visit_his
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="cip != null">
         cip,
       </if>
@@ -131,11 +129,11 @@
       <if test="ctime != null">
         ctime,
       </if>
+      <if test="mtime != null">
+        mtime,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="cip != null">
         #{cip,jdbcType=VARCHAR},
       </if>
@@ -147,6 +145,9 @@
       </if>
       <if test="ctime != null">
         #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mtime != null">
+        #{mtime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -174,6 +175,9 @@
       <if test="record.ctime != null">
         ctime = #{record.ctime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.mtime != null">
+        mtime = #{record.mtime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -185,7 +189,8 @@
       cip = #{record.cip,jdbcType=VARCHAR},
       cid = #{record.cid,jdbcType=VARCHAR},
       cname = #{record.cname,jdbcType=VARCHAR},
-      ctime = #{record.ctime,jdbcType=TIMESTAMP}
+      ctime = #{record.ctime,jdbcType=TIMESTAMP},
+      mtime = #{record.mtime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -205,6 +210,9 @@
       <if test="ctime != null">
         ctime = #{ctime,jdbcType=TIMESTAMP},
       </if>
+      <if test="mtime != null">
+        mtime = #{mtime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -213,7 +221,8 @@
     set cip = #{cip,jdbcType=VARCHAR},
       cid = #{cid,jdbcType=VARCHAR},
       cname = #{cname,jdbcType=VARCHAR},
-      ctime = #{ctime,jdbcType=TIMESTAMP}
+      ctime = #{ctime,jdbcType=TIMESTAMP},
+      mtime = #{mtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

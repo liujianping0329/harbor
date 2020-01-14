@@ -454,6 +454,66 @@ public class VisitHisExample {
             addCriterion("ctime not between", value1, value2, "ctime");
             return (Criteria) this;
         }
+
+        public Criteria andMtimeIsNull() {
+            addCriterion("mtime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMtimeIsNotNull() {
+            addCriterion("mtime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMtimeEqualTo(Date value) {
+            addCriterion("mtime =", value, "mtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andMtimeNotEqualTo(Date value) {
+            addCriterion("mtime <>", value, "mtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andMtimeGreaterThan(Date value) {
+            addCriterion("mtime >", value, "mtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andMtimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("mtime >=", value, "mtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andMtimeLessThan(Date value) {
+            addCriterion("mtime <", value, "mtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andMtimeLessThanOrEqualTo(Date value) {
+            addCriterion("mtime <=", value, "mtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andMtimeIn(List<Date> values) {
+            addCriterion("mtime in", values, "mtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andMtimeNotIn(List<Date> values) {
+            addCriterion("mtime not in", values, "mtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andMtimeBetween(Date value1, Date value2) {
+            addCriterion("mtime between", value1, value2, "mtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andMtimeNotBetween(Date value1, Date value2) {
+            addCriterion("mtime not between", value1, value2, "mtime");
+            return (Criteria) this;
+        }
     }
 
     /**
