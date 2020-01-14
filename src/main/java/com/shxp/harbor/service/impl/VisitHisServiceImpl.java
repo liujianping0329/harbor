@@ -7,6 +7,7 @@ import com.shxp.harbor.query.VisitHisQuery;
 import com.shxp.harbor.service.VisitHisService;
 import com.shxp.harbor.vo.StatisticsVO;
 import lombok.Data;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,7 +49,11 @@ public class VisitHisServiceImpl implements VisitHisService {
         List<VisitHisHelpBO> visitHisHelpBOS = visitHises.stream().map(visitHis -> {
             VisitHisHelpBO visitHisHelpBO = new VisitHisHelpBO();
             BeanUtils.copyProperties(visitHis, visitHisHelpBO);
-            visitHisHelpBO.setProvinceCode(Integer.valueOf(visitHis.getCid().substring(0, 2)));
+            if(StringUtils.isNumeric(visitHis.getCid())){
+                visitHisHelpBO.setProvinceCode(Integer.valueOf(visitHis.getCid().substring(0, 2)));
+            }else{
+                visitHisHelpBO.setProvinceCode(99);
+            }
             return visitHisHelpBO;
         }).collect(Collectors.toList());
         Map<String, List<VisitHisHelpBO>> proGroup = visitHisHelpBOS.stream().collect(Collectors.groupingBy(VisitHisHelpBO::getProvinceName));
