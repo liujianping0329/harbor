@@ -3,9 +3,13 @@ package com.shxp.harbor.service;
 import com.shxp.harbor.po.VisitHis;
 import com.shxp.harbor.query.LoginQuery;
 import com.shxp.harbor.query.VisitHisQuery;
+import com.shxp.harbor.vo.StatisticsVO;
 import com.shxp.harbor.vo.UserLoginVO;
+
+import java.util.List;
 
 public interface VisitHisService {
     Integer addHis(VisitHisQuery visitHisQuery);
 
+    List<StatisticsVO> getProvinceSta();
 }

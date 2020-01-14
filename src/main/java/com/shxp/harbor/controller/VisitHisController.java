@@ -1,12 +1,9 @@
 package com.shxp.harbor.controller;
 
-import com.shxp.harbor.po.VisitHis;
-import com.shxp.harbor.query.LoginQuery;
 import com.shxp.harbor.query.VisitHisQuery;
 import com.shxp.harbor.response.BaseResponse;
-import com.shxp.harbor.service.UserService;
 import com.shxp.harbor.service.VisitHisService;
-import com.shxp.harbor.vo.UserLoginVO;
+import com.shxp.harbor.vo.StatisticsVO;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/visit/his")
@@ -32,6 +30,11 @@ public class VisitHisController {
         return new BaseResponse<>(visitHisService.addHis(visitHisQuery));
     }
 
+    @ApiOperation(value = "获取省份统计信息", tags = "浏览历史")
+    @RequestMapping(value = "/get/provice", method = RequestMethod.GET)
+    public BaseResponse<List<StatisticsVO>> getProviceSta() {
+        return new BaseResponse<>(visitHisService.getProvinceSta());
+    }
 
 
 }
