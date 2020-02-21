@@ -20,8 +20,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @ApiOperation(value = "登陆", tags = "基本接口")
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @ApiOperation(value = "test", tags = "test接口")
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
     public BaseResponse<UserLoginVO> login(@RequestBody LoginQuery loginQuery) {
         UserLoginVO login = userService.login(loginQuery);
         request.getSession().setAttribute("userInfo",login);

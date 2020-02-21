@@ -24,7 +24,7 @@ public class VisitHisController {
     @Autowired
     private VisitHisService visitHisService;
 
-    @ApiOperation(value = "新增浏览记录", tags = "浏览历史")
+    @ApiOperation(value = "新增浏览记录,进主页的时候调用的", tags = "浏览历史")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public BaseResponse<Integer> addHis(@RequestBody VisitHisQuery visitHisQuery) {
         return new BaseResponse<>(visitHisService.addHis(visitHisQuery));
