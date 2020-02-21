@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class NewsQuery {
     private Integer id;
-
+    private Integer valid;
 
     /**
      * 标题

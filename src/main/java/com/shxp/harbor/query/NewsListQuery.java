@@ -5,5 +5,5 @@ import lombok.Data;
 
 @Data
 public class NewsListQuery extends CommonPageBO {
-    private Integer valid;
+    private Integer valid=1;
 }
