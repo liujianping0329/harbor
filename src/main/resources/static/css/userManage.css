@@ -1,0 +1,6 @@
+#users th{
+    border: solid;
+}
+#users td{
+    border: dashed;
+}

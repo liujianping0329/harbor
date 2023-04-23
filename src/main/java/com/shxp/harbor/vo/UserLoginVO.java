@@ -5,13 +5,10 @@ import lombok.Data;
 
 @Data
 public class UserLoginVO {
-    private Long userId;
+    private Integer id;
 
-    private String username;
+    private String acount;
 
-    @ApiModelProperty("部门ID")
-    private Long deptId;
-
-    @ApiModelProperty("警员编号")
-    private String policeno;
+    @ApiModelProperty("userType")
+    private Integer userType;
 }
