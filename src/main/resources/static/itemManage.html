@@ -4,13 +4,37 @@
     <meta charset="UTF-8">
     <title>harbor</title>
     <link href="jquery-ui-1.13.2.custom/jquery-ui.css" type="text/css" rel="stylesheet" />
-    <link href="css/login.css" type="text/css" rel="stylesheet" />
+    <link href="css/itemManage.css" type="text/css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="jquery-ui-1.13.2.custom/jquery-ui.js"></script>
     <script src="js/common.js"></script>
-    <script src="js/login.js"></script>
+    <script src="js/itemManage.js"></script>
 </head>
 <body>
-item
+<button id ="itemInsert">新增</button>
+<!--商品組新增/修改-->
+<div id="itemGroupInsertinfo" title="商品組新增頁面">
+    <table id="itemInsertpage">
+        <tr><th id = "itemNum"></th><th>商品名</th></tr>
+        <tr><th id = "idNum" mydata=""></th><th><input type="text" id="insertName"/></th></tr>
+    </table>
+    <button id = "insertConform">確認新增</button>
+    <button id = "updateConform">確認修改</button>
+</div>
+
+<!--商品主頁面-->
+<table id="itemGroup">
+    <tr><th>No</th><th>商品組</th><th>查看詳情</th><th>刪除</th><th>修改</th></tr>
+</table>
+
+<!--商品查詢頁面-->
+<div id="iteminf" title="商品詳情">
+    <span>商品組名稱:</span><spanp id="itemInfPageItemGroup"></spanp><br>
+    <table id="iteminformation">
+        <tr><th>No</th><th>商品名</th><th>數量</th><th>產地</th><th>查看詳情</th><th>刪除</th><th>修改</th></tr>
+    </table>
+</div>
+
+</div>
 </body>
 </html>

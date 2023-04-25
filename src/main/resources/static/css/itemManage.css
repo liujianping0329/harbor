@@ -1,0 +1,14 @@
+/*商品group頁面 */
+#itemGroup th{
+    border: solid;
+}
+#itemGroup td{
+    border: dashed;
+}
+/*商品頁面 */
+#iteminf th{
+    border: solid;
+}
+#iteminf td{
+    border: dashed;
+}
