@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <title>harbor</title>
     <link href="jquery-ui-1.13.2.custom/jquery-ui.css" type="text/css" rel="stylesheet" />
-    <link href="css/login.css" type="text/css" rel="stylesheet" />
+    <link href="css/userMain.css" type="text/css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="jquery-ui-1.13.2.custom/jquery-ui.js"></script>
     <script src="js/common.js"></script>
-    <script src="js/login.js"></script>
+    <script src="js/userMain.js"></script>
 </head>
 <body>
-123
+<div id="topBanner"><h1>出入庫管理</h1></div>
+<div id="mainPage">
+    <table id="table"r><th>商品</th><th>價錢</th><th>數量</th><th>入庫or出庫</th></tr>
+        <tr><th><input type="text" class="item" /></th><th><input type="text" class="price" /></th><th><input type="text" class="number" /></th><th>入庫or出庫</th></tr>
+    </table>
+    <input id="cornerPlus" type="submit" value="新增欄目">
+</div>
+
 </body>
 </html>

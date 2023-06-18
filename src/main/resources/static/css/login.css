@@ -1,6 +1,80 @@
+/*  id    => #xxx  */
+/*  class => .xxx  */
+
 #loginDiv{
     width: 200px;
-    height: 90px;
+    height: 160px;
     background-color: aqua;
     margin: 250px auto;
+    position : fixed;
+    float: right;
+    right:45%;
+    padding : 3px;
+    border-radius: 5px;
+}
+
+#signInDiv{
+    width: 300px;
+    height: 200px;
+    background-color: white;
+    /* 真ん中  margin: auto */
+    margin: 250px auto;
+    border: 1px solid red ;
+    display: none;
+    position : fixed;
+    right:42%;
+    /*圓角 border-radius */
+    border-radius: 25px;
+}
+
+#hideBtn{
+    float:right;
+    margin-right:10px;
+    margin-top:10px;
+    font-size: 15px
+}
+#signInTitle{
+    font-size: 30px;
+    margin: auto;
+    text-align: center;
+}
+
+
+#signInText{
+    margin : 3px;
+}
+
+button{
+    margin:5px;
+}
+/*input*/
+input{
+    margin : 5px;
+    border-radius: 3px;
+}
+
+#sucPage{
+    width: 300px;
+    height: 200px;
+    background-color: #ff55f0;
+    /* 真ん中  margin: auto */
+    margin: 250px auto;
+    border: 1px solid red ;
+    display: none;
+    position : fixed;
+    right:43%;
+    /*圓角 border-radius */
+    border-radius: 25px;
+}
+
+#sucText{
+    text-align: center;
+    font-size:20px;
+
+
+}
+#sucBtn{
+    margin: 100px auto;
+    width: 100%;
+
 }

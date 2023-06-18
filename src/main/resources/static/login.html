@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>harbor</title>
+    <title>login</title>
     <link href="jquery-ui-1.13.2.custom/jquery-ui.css" type="text/css" rel="stylesheet" />
     <link href="css/login.css" type="text/css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -11,10 +11,36 @@
     <script src="js/login.js"></script>
 </head>
 <body>
-<div id="loginDiv">
-    username:<input type="text" id="username" /><br>
-    password:<input type="text" id="password" /><br>
-    <button id="loginBtn">login</button><span id="errMsg"></span>
+<!--入力+Btn-->
+<div >
+    <div id="loginDiv">
+        username:<input type="text" id="username" /><br>
+        password:<input type="text" id="password" /><br>
+        <!--      login-->
+        <button id="loginBtn">login</button>
+        <!--      register-->
+        <button id="registerBtn">register</button>
+        <!--      errMsg-->
+        <span id="errMsg"></span>
+    </div>
+</div>
+
+<!--register画面-->
+<div id="signInDiv">
+    <div id="signInTitle">新規登録<span id="hideBtn">X</span></div>
+    <div id="signInText">
+        username:<input type="text" id="signInUsername" /><br>
+        password:<input type="text" id="signInPassword" /><br>
+        usertype:<input type="text" id="insertUserType" /><br>
+        <!--      確認Btn-->
+        <button id="sentBtn">確認</button>
+        <span id="signInErrMsg"></span>
+    </div>
+</div>
+
+<div id="sucPage">
+    <div id="sucText">新規登録成功</div>
+    <div><button id="sucBtn">確認</button></div>
 </div>
 </body>
 </html>

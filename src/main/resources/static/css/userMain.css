@@ -1,0 +1,14 @@
+#topBanner{
+    height: 40px;
+    width: 100%;
+    background-color: #f5f5b5;
+}
+
+#mainPage{
+    height: 2000px;
+    width: 100%;
+    background-color: aquamarine;
+}
+#mainPage th{
+    border: solid;
+}

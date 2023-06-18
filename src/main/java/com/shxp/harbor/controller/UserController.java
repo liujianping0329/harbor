@@ -1,9 +1,11 @@
 package com.shxp.harbor.controller;
 
+import com.shxp.harbor.query.InsertUserListQuery;
 import com.shxp.harbor.query.LoginQuery;
 import com.shxp.harbor.query.UserListQuery;
 import com.shxp.harbor.response.BaseResponse;
 import com.shxp.harbor.service.UserService;
+import com.shxp.harbor.vo.InsertUserListVO;
 import com.shxp.harbor.vo.UserListVO;
 import com.shxp.harbor.vo.UserLoginVO;
 import io.swagger.annotations.ApiOperation;
@@ -38,4 +40,11 @@ public class UserController {
         return new BaseResponse<>(userListVOS);
     }
 
+
+    @ApiOperation(value = "insertUser", tags = "insertUser")
+    @RequestMapping(value = "/insertUser", method = RequestMethod.POST)
+    public BaseResponse<Integer> insertUser(@RequestBody InsertUserListQuery insertuserListQuery) {
+        Integer insertUser = userService.insertUser(insertuserListQuery);
+        return new BaseResponse<>(insertUser);
+    }
 }
